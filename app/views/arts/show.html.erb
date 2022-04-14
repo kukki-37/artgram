@@ -1,2 +1,64 @@
-<h1>Arts#show</h1>
-<p>Find me in app/views/arts/show.html.erb</p>
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        作品詳細
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-7">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <%= attachment_image_tag @art, :image %>
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4"><%= @art.title %></p>
+              </div>
+            </div>
+            <div class="content">
+              <table class="table is-narrow">
+                <tr>
+                  <th>レシピ</th>
+                </tr>
+                <tr>
+                  <td><%= simple_format @art.body %></td>
+                </tr>
+              </table>
+              <% if @art.user.id == current_user.id %>
+                <%= link_to "編集画面へ", edit_art_path(@art), class: "button is-success" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <article class="panel is-link">
+          <p class="panel-heading">
+            By <%= @art.user.username %>
+          </p>
+          <div class="panel-block">
+            <p class="control">
+              <%= @art.user.profiler %>
+            </p>
+          </div>
+          <%= link_to user_path(@art.user), class: "panel-block" do %>
+            <span class="panel-icon">
+              <i class="fas fa-user" aria-hidden="true"></i>
+            </span>
+            <%= @art.user.username %> さんのページへ
+          <% end %>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>

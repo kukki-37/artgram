@@ -1,44 +1,44 @@
-class RecipesController < ApplicationController
+class ArtsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   def new
-    @recipe = Recipe.new
+    @art = Art.new
   end
   def create
-    @recipe = current_user.recipes.build(recipe_params)
-    if @recipe.save
-      redirect_to recipe_path(@recipe), notice: "レシピを投稿しました。"
+    @art = current_user.arts.build(art_params)
+    if @art.save
+      redirect_to art_path(@art), notice: "作品を投稿しました。"
     else
       render :new
     end
   end
   def index
-    @recipes = Recipe.all.order(id: "DESC")
+    @arts = Art.all.order(id: "DESC")
   end
   def show
-    @recipe = Recipe.find(params[:id])
+    @art = Art.find(params[:id])
   end
   def edit
-    @recipe = Recipe.find(params[:id])
-    if @recipe.user != current_user
-        redirect_to recipes_path, alert: "不正なアクセスです。"
+    @art = Art.find(params[:id])
+    if @art.user != current_user
+        redirect_to arts_path, alert: "不正なアクセスです。"
     end
   end
   def update
-    @recipe = Recipe.find(params[:id])
-    if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe), notice: "レシピを更新しました。"
+    @art = Art.find(params[:id])
+    if @art.update(art_params)
+      redirect_to art_path(@art), notice: "作品を更新しました。"
     else
       render :edit
     end
   end
   def destroy
-    recipe = Recipe.find(params[:id])
-    recipe.destroy
-    redirect_to user_path(recipe.user), notice: "レシピを削除しました。"
+    art = Art.find(params[:id])
+    art.destroy
+    redirect_to user_path(art.user), notice: "作品を削除しました。"
   end
 
   private
-  def recipe_params
-    params.require(:recipe).permit(:title, :body, :image, :comment)
+  def art_params
+    params.require(:art).permit(:title, :body, :image, :comment)
   end
 end
