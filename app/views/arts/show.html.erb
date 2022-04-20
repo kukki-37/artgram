@@ -27,12 +27,25 @@
             <div class="content">
               <table class="table is-narrow">
                 <tr>
-                  <th>レシピ</th>
+                  <th>作品</th>
                 </tr>
                 <tr>
                   <td><%= simple_format @art.body %></td>
                 </tr>
               </table>
+              <div>
+              <% if current_user.already_favorited?(@art) %>
+            <%= link_to art_favorites_path(@art), method: :delete do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
+            <%= @art.favorites.count %>
+          <% else %>
+            <%= link_to art_favorites_path(@art), method: :art do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+            <%= @art.favorites.count %>　
+          <% end %>
+          </div>
               <% if @art.user.id == current_user.id %>
                 <%= link_to "編集画面へ", edit_art_path(@art), class: "button is-success" %>
               <% end %>
@@ -40,7 +53,19 @@
           </div>
         </div>
       </div>
-
+        <div>
+        <p>コメント件数：<%= @art.art_comments.count %></p>
+        <% @art.art_comments.each do |art_comment| %>
+        <p><%= image_tag art_comment.user.get_profile_image(100,100) %></p>
+        <%= art_comment.user.name %>
+        <%= art_comment.created_at.strftime('%Y/%m/%d') %><%= art_comment.comment %>
+        <% end %>
+        </div>
+      <div>
+        <%= form_with model: [@art_image, @art_comment] do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
+        <% end %>
       <div class="column is-4">
         <article class="panel is-link">
           <p class="panel-heading">

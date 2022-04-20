@@ -3,6 +3,7 @@ class ArtsController < ApplicationController
   def new
     @art = Art.new
   end
+  
   def create
     @art = current_user.arts.build(art_params)
     if @art.save
@@ -11,18 +12,23 @@ class ArtsController < ApplicationController
       render :new
     end
   end
+  
   def index
     @arts = Art.all.order(id: "DESC")
   end
+  
   def show
     @art = Art.find(params[:id])
+    @art_comment = ArtComment.new
   end
+  
   def edit
     @art = Art.find(params[:id])
     if @art.user != current_user
         redirect_to arts_path, alert: "不正なアクセスです。"
     end
   end
+  
   def update
     @art = Art.find(params[:id])
     if @art.update(art_params)
@@ -31,6 +37,7 @@ class ArtsController < ApplicationController
       render :edit
     end
   end
+  
   def destroy
     art = Art.find(params[:id])
     art.destroy
