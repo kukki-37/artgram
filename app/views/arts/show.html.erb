@@ -27,7 +27,7 @@
             <div class="content">
               <table class="table is-narrow">
                 <tr>
-                  <th>レシピ</th>
+                  <th>詳細</th>
                 </tr>
                 <tr>
                   <td><%= simple_format @art.body %></td>
@@ -48,7 +48,7 @@
           </p>
           <div class="panel-block">
             <p class="control">
-              <%= @art.user.profiler %>
+              <%= @art.user.profile %>
             </p>
           </div>
           <%= link_to user_path(@art.user), class: "panel-block" do %>

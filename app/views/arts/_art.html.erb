@@ -1,0 +1,5 @@
+<%= link_to image_tag( art.image.variant(resize: '100x100') ), art_path(art.id) %>
+<%= link_to art.user.name, user_path(art.user.id) %>
+<i class="fa fa-heart unfavorite-btn"></i>
+<%= art.favorites.length %>
+<%= link_to art.title, art_path(art.id) %>
