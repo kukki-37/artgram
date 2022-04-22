@@ -2,7 +2,7 @@ class UsersController < ApplicationController
    before_action :set_user, only: [:favorites]
   def index
     @users = User.all
-    @arts = @user.art.page(params[:page])
+    @users = User.all.page(params[:page]).per(3)
   end
 
   def show
