@@ -1,0 +1,24 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+         いいね一覧
+      </h1>
+    </div>
+  </div>
+</section>
+      <% @favorite_arts.each do |art|%>
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <h5><%=art.title %></h5>
+              <figure class="image is-4by3">
+              <%= link_to art_path(art) do %>
+               <%= attachment_image_tag art, :image %>
+              <% end %> 
+            </figure>  
+            <div class='p-top__paginate'><%= paginate(@arts) %></div>
+        </div>
+    </div>
+  </div>
+<% end %>

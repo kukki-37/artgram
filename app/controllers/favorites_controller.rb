@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
   def create
+    @art = Art.find(params[:art_id])
     @favorite = current_user.favorites.create(art_id: params[:art_id])
     redirect_back(fallback_location: root_path)
   end

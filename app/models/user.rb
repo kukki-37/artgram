@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :username, presence: true
   has_many :arts, dependent: :destroy
   has_many :favorites, dependent: :destroy
-
+  
   def already_favorited?(art)
     
   end
