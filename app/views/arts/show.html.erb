@@ -36,17 +36,7 @@
               <% if @art.user.id == current_user.id %>
                 <%= link_to "編集画面へ", edit_art_path(@art), class: "button is-success" %>
               <% end %>
-              <% if current_user.already_favorited?(Art) %>
-                <%= link_to art_favorites_path(art), method: :delete do %>
-                <i class="fas fa-heart"></i>
-             <% end %>
-                <%= art.favorites.count %>
-              <% else %>
-                <%= link_to art_favorites_path(@art), method: :post do %>
-              <i class="far fa-heart"></i>
-                <% end %>
-               <%= @art.favorites.count %>
-                <% end %>
+              <div id="art_<%= @art.id %>"><%= render "favorites/favorite", art: @art %></div>
             </div>
           </div>
         </div>

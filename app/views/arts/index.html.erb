@@ -7,7 +7,17 @@
     </div>
   </div>
 </section>
-
+<h3>投稿を検索</h3>
+<div class="search-form">
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, value: @keyword %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
+<div class="post-list">
+  <% @arts.each do |art| %>
+  <% end %>
+</div>
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
@@ -33,17 +43,15 @@
                 </div>
               </div>
                 <div>
-                  <% if current_user.already_favorited?(Art) %>
-                  <%= link_to art_favorites_path(art), method: :delete do %>
-                    <i class="fas fa-heart"></i>
+                  <% if art.favo?(current_user) %>
+                <%= link_to favorites_user_path(art), method: :delete, remote: true do %>
+                   ♥ <%= art.favorites.count %>
                   <% end %>
-                  <%= art.favorites.count %>
-                <% else %>
-                  <%= link_to art_favorites_path(art), method: :post do %>
-                    <i class="far fa-heart"></i>
-                  <% end %>
-                  <%= art.favorites.count %>
+               <% else %>
+                <%=link_to favorites_user_path(art), method: :post, remote: true do %>
+                  ♡ <%= art.favorites.count %>
                 <% end %>
+               <% end %>
                 </div>
               <div class="content">
                 <time><%= art.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
@@ -52,7 +60,7 @@
           </div>
         </div>
       <% end %>
-      <div class='p-top__paginate'><%= paginate(@arts) %></div>
+      <div class='p-top__paginate'><%= paginate (@arts) %></div>
     </div>
   </div>
 </section>

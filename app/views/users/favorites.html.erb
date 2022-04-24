@@ -7,7 +7,8 @@
     </div>
   </div>
 </section>
-      <% @favorite_arts.each do |art|%>
+  <% @favorite_arts.each do |art|%>
+    <div class="col-md-4">
         <div class="column is-4">
           <div class="card">
             <div class="card-image">
@@ -17,8 +18,10 @@
                <%= attachment_image_tag art, :image %>
               <% end %> 
             </figure>  
-            <div class='p-top__paginate'><%= paginate(@arts) %></div>
+            <td><%= art.body %></td>
+            </div>
         </div>
     </div>
+  </div>
   </div>
 <% end %>

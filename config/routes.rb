@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   root to: "homes#top"
   resources :users, except: [:new, :create, :destroy] do
    member do
-      get :favorites
+     get :favorites
    end
   end
+  get 'search' => 'arts#search'
   
   resources :arts do
     resources :favorites, only: [:create, :destroy] 

@@ -14,12 +14,13 @@ class ArtsController < ApplicationController
   end
 
   def index
+    @arts = Art.page(params[:page]).per(3)
     @arts = Art.all.order(id: "DESC")
-    @arts = Art.all.page(params[:page]).per(3)
   end
 
   def show
     @art = Art.find(params[:id])
+    @arts = Art.page(params[:page]).per(3)
   end
 
   def edit
@@ -27,6 +28,13 @@ class ArtsController < ApplicationController
     if @art.user != current_user
         redirect_to arts_path, alert: "不正なアクセスです。"
     end
+  end
+  
+  def search
+    @arts = Art.page(params[:page]).per(3)
+    @arts = Art.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
   end
 
   def update

@@ -1,0 +1,10 @@
+    <% if art.favo?(current_user) %>
+  <%= link_to favorites_user_path(art), method: :delete, remote: true do %>
+     ♥ <%= art.favorites.count %>
+    <% end %>
+ <% else %>
+  <%=link_to favorites_user_path(art), method: :post, remote: true do %>
+    ♡ <%= art.favorites.count %>
+  <% end %>
+ <% end %>
+                    

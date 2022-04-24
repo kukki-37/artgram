@@ -89,19 +89,8 @@
                   <% end %>
                 </div>
                 <div>
-                  <% if current_user.already_favorited?(art) %>
-                  <%= link_to art_favorites_path(art), method: :delete do %>
-                    <i class="fas fa-heart"></i>
-                  <% end %>
-                  <%= art.favorites.count %>
-                <% else %>
-                  <%= link_to art_favorites_path(art), method: :post do %>
-                    <i class="far fa-heart"></i>
-                  <% end %>
-                  <%= art.favorites.count %>
-                <% end %>
+                  </div>
                 </div>
-              </div>
               <div class="content">
                 <time><%= art.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
               </div>
@@ -109,6 +98,7 @@
           </div>
         </div>
       <% end %>
+      <div class='p-top__paginate'><%= paginate (@arts) %></div>
     </div>
   </div>
 </section>
