@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   def favorites
     favorites = Favorite.where(user_id: @user.id).pluck(:art_id)
     @favorite_arts = Art.find(favorites)
+    @arts = Art.page(params[:page]).per(3)
   end
   
   private

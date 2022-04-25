@@ -14,7 +14,7 @@ class Art < ApplicationRecord
   end
   
   def favo?(user)
-    favorites.where(user_id: user.id).exists?
+    
   end
   
 end

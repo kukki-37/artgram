@@ -15,7 +15,7 @@ class ArtsController < ApplicationController
 
   def index
     @arts = Art.page(params[:page]).per(3)
-    @arts = Art.all.order(id: "DESC")
+    
   end
 
   def show
@@ -31,8 +31,8 @@ class ArtsController < ApplicationController
   end
   
   def search
-    @arts = Art.page(params[:page]).per(3)
-    @arts = Art.search(params[:keyword])
+    
+    @arts = Art.search(params[:keyword]).page(params[:page]).per(3)
     @keyword = params[:keyword]
     render "index"
   end
