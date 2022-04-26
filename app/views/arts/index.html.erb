@@ -43,15 +43,17 @@
                 </div>
               </div>
                 <div>
-                  <% if art.favo?(current_user) %>
-                <%= link_to favorites_user_path(art), method: :delete, remote: true do %>
-                   ♥ <%= art.favorites.count %>
+                  <% if current_user.already_favorited?(art) %>
+                  <%= link_to art_favorites_path(art), method: :delete do %>
+                    <i class="fas fa-heart"></i>
                   <% end %>
-               <% else %>
-                <%=link_to favorites_user_path(art), method: :post, remote: true do %>
-                  ♡ <%= art.favorites.count %>
+                  <%= art.favorites.count %>
+                <% else %>
+                  <%= link_to art_favorites_path(art), method: :post do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                  <%= art.favorites.count %>
                 <% end %>
-               <% end %>
                 </div>
               <div class="content">
                 <time><%= art.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
