@@ -1,11 +1,11 @@
  <% if current_user.already_favorited?(art) %>
 <%= link_to art_favorites_path(art), method: :delete do %>
-                    <i class="fas fa-heart"></i>
-                  <% end %>
-                  <%= art.favorites.count %>
-                <% else %>
-                  <%= link_to art_favorites_path(art), method: :post do %>
-                    <i class="far fa-heart"></i>
-                  <% end %>
-                  <%= art.favorites.count %>
-                <% end %>
+  <i class="fas fa-heart"></i>
+  <% end %>
+  <%= art.favorites.count %>
+    <% else %>
+  <%= link_to art_favorites_path(art), method: :post do %>
+    <i class="far fa-heart"></i>
+  <% end %>
+  <%= art.favorites.count %>
+<% end %>
