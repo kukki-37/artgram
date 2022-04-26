@@ -37,6 +37,7 @@
                 <%= link_to "編集画面へ", edit_art_path(@art), class: "button is-success" %>
               <% end %>
               <div id="art_<%= @art.id %>"><%= render "favorites/favorite", art: @art %></div>
+              
             </div>
           </div>
         </div>
@@ -59,6 +60,31 @@
             <%= @art.user.username %> さんのページへ
           <% end %>
         </article>
+             <!--コメント機能-->
+        <div class="comments ml-5 mt-5">
+        <%= form_with(model:[@art,@comment],local:true)do |f|%>
+        <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントする" %>
+        <%= f.submit "送信する", class: "btn btn-success mb-4" %>
+        <% end %>
+
+        <p>コメント件数：<%= @comments.count %></p>
+          <% @comments.each do |comment| %>
+	        <div class="comments-index mb-2">
+          <%= comment.user.name %>
+          <%= comment.created_at.strftime('%Y/%m/%d') %><br>
+          <div class="d-flex">
+            <%= comment.comment %>
+            <% if comment.user == current_user %>
+            <div class="comment-delete">
+              <%= link_to "削除", art_comment_path(comment.art, comment), method: :delete, class: "btn-sm btn-danger" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+        <%= paginate @comments %>
+      </div>
+    </div>
       </div>
     </div>
   </div>

@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :arts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_arts, through: :favorites, source: :art
+  has_many :comments, dependent: :destroy
   
   def already_favorited?(art)
     self.favorites.exists?(art_id: art.id)
