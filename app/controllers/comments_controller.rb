@@ -10,7 +10,9 @@ class CommentsController < ApplicationController
 
 
   def destroy
-    Comment.find_by(id: params[:id], art_id: params[:art_id]).destroy
+    art = Art.find(params[:art_id])
+    comment = current_user.comments.find_by(art_id: art.id)
+    comment.destroy
     redirect_to art_path(params[:art_id])
   end
 
