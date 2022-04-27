@@ -22,6 +22,7 @@ class ArtsController < ApplicationController
     @art = Art.find(params[:id])
     @arts = Art.page(params[:page]).per(3)
     @comments = @art.comments.page(params[:page]).per(3).reverse_order
+    @comment = Comment.new
   end
 
   def edit

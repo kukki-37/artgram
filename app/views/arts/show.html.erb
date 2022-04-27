@@ -70,13 +70,13 @@
         <p>コメント件数：<%= @comments.count %></p>
           <% @comments.each do |comment| %>
 	        <div class="comments-index mb-2">
-          <%= comment.user.name %>
+          <%= comment.user.username %>
           <%= comment.created_at.strftime('%Y/%m/%d') %><br>
           <div class="d-flex">
             <%= comment.comment %>
             <% if comment.user == current_user %>
             <div class="comment-delete">
-              <%= link_to "削除", art_comment_path(comment.art, comment), method: :delete, class: "btn-sm btn-danger" %>
+              <%= link_to "削除", art_comments_path(comment.art, comment), method: :delete, class: "btn-sm btn-danger" %>
             </div>
           </div>
         </div>

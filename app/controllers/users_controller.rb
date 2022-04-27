@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user= User.find(params[:id])
     @arts = Art.page(params[:page]).per(3)
   end
 
