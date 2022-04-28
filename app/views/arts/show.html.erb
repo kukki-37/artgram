@@ -50,7 +50,7 @@
           </p>
           <div class="panel-block">
             <p class="control">
-              <%= @art.user.profiler %>
+              <%= @art.user.profile %>
             </p>
           </div>
           <%= link_to user_path(@art.user), class: "panel-block" do %>
@@ -79,9 +79,9 @@
             <div class="comment-delete">
               <%= link_to "削除", art_comments_path(comment.art, comment), method: :delete, class: "btn-sm btn-danger" %>
             </div>
+            <% end %>
           </div>
         </div>
-        <% end %>
         <% end %>
         <%= paginate @comments %>
       </div>

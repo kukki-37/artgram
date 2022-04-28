@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user= User.find(params[:id])
-    @arts = Art.page(params[:page]).per(3)
+    @arts = @user.arts.page(params[:page]).per(3)
   end
 
   def edit
