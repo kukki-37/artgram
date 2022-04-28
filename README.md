@@ -30,7 +30,9 @@
 
 ### 設計書
 
-＜coming soon＞
+ER図　https://app.diagrams.net/#G1JiRzXZek6BFRWtue4LY2XlcuwE9lYjpw
+
+
 
 ### 開発環境
 
