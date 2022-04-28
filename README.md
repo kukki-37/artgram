@@ -30,7 +30,7 @@
 
 ### 設計書
 
-ER図　https://app.diagrams.net/#G1JiRzXZek6BFRWtue4LY2XlcuwE9lYjpw
+
 
 
 
