@@ -27,7 +27,7 @@
         <%= link_to root_path, class: "navbar-item" do %>
           <h1 class="title is-4" style="font-family: cursive;">artgram</h1>
         <% end %>
-        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+        <div class="navbar-burger" data-target="navbarExampleTransparentExample">
           <span></span>
           <span></span>
           <span></span>
@@ -36,11 +36,13 @@
 
       <% if user_signed_in? %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-start">
           <div class="navbar-item">
             <%= link_to "作品一覧", arts_path, class: "navbar-item button is-warning is-light" %>
           </div>
           <div class="navbar-item">
             <%= link_to "作品投稿", new_art_path, class: "navbar-item button is-warning is-light" %>
+          </div>
           </div>
 
           <div class="navbar-end">
@@ -61,8 +63,10 @@
         </div>
       <% else %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-start">
           <div class="navbar-item">
             <%= link_to "About", about_path, class: "button is-warning is-light" %>
+          </div>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
