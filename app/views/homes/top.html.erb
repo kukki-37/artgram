@@ -7,12 +7,22 @@
         </p>
       </div>
       <div class="columns is-centered">
+        <% if user_signed_in? %>
+          <div class="column is-5">
+          <br>
+          <%= link_to "アーティスト一覧", users_path, class: "button is-warning is-fullwidth" %>
+          <br>
+          <%= link_to "作品一覧", arts_path, class: "button is-warning is-fullwidth" %>
+        </div>
+      </div>
+      <% else %>    
         <div class="column is-5">
           <br>
           <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-fullwidth" %>
           <br>
           <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-fullwidth" %>
         </div>
+        <% end %>
       </div>
     </div>
   </article>
