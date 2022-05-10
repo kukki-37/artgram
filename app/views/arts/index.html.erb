@@ -43,19 +43,7 @@
                   <div class="title"><%=link_to art.user.username, user_path(art.user) %></div>
                 </div>
               </div>
-                <div>
-                  <% if current_user.already_favorited?(art) %>
-                  <%= link_to art_favorites_path(art), method: :delete do %>
-                    <i class="fas fa-heart"></i>
-                  <% end %>
-                  <%= art.favorites.count %>
-                <% else %>
-                  <%= link_to art_favorites_path(art), method: :post do %>
-                    <i class="far fa-heart"></i>
-                  <% end %>
-                  <%= art.favorites.count %>
-                <% end %>
-                </div>
+               
                 <p class="caption"><%= "#{art.comments.count} コメント" %></p>
               <div class="content">
                 <time><%= art.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
