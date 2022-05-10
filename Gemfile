@@ -68,9 +68,9 @@ end
 gem 'kaminari','~> 1.2.1'
 gem 'rails_admin', '~> 2.0.0.beta'
 group :development, :test do
-  
+
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  
+
   gem 'pry-byebug'
   gem 'pry-rails'
 end
