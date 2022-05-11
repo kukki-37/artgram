@@ -43,7 +43,7 @@
                   <div class="title"><%=link_to art.user.username, user_path(art.user) %></div>
                 </div>
               </div>
-               
+                <p class="caption"><%= "♡　#{art.favorites.count}" %></p>
                 <p class="caption"><%= "#{art.comments.count} コメント" %></p>
               <div class="content">
                 <time><%= art.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
