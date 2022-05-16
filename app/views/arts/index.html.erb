@@ -32,19 +32,19 @@
                 <% end %>
               </figure>
             </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-48x48">
-                    <%= attachment_image_tag art.user, :profile_image, fallback: "no-image.jpg", class: "profile_image" %>
-                  </figure>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image is-48x48">
+                      <%= attachment_image_tag art.user, :profile_image, fallback: "no-image.jpg", class: "profile_image" %>
+                    </figure>
+                  </div>
+                    <div class="media-content">
+                      <div class="title"><%=link_to art.user.username, user_path(art.user) %></div>
+                    </div>
                 </div>
-                <div class="media-content">
-                  <div class="title"><%=link_to art.user.username, user_path(art.user) %></div>
-                </div>
-              </div>
                 <p class="caption"><%= "♡　#{art.favorites.count}" %></p>
-                <p class="caption"><%= "#{art.comments.count} コメント" %></p>
+                 <p class="caption"><%= "#{art.comments.count} コメント" %></p>
               <div class="content">
                 <time><%= art.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
               </div>
